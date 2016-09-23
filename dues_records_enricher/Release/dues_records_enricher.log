@@ -1,0 +1,9 @@
+﻿  Constants.cpp
+  bookRecordDTO.cpp
+  excelDate.cpp
+  main.cpp
+main.cpp(668): warning C4244: 'argument' : conversion from 'time_t' to 'double', possible loss of data
+  Generating code
+c:\users\pf749_000\documents\visual studio 2013\projects\dues_records_enricher\dues_records_enricher\bookrecorddto.cpp(294): warning C4715: 'bookRecord::bookRecordDTO::getMonthsSincePayment' : not all control paths return a value
+  Finished generating code
+  dues_records_enricher.vcxproj -> C:\Users\pf749_000\Documents\Visual Studio 2013\Projects\dues_records_enricher\Release\dues_records_enricher.exe
