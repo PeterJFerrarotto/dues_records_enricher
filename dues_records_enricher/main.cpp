@@ -310,6 +310,15 @@ bookRecord::bookRecordDTO* enrichBookData(const char* filePath, size_t num){
 			bookRecord->setAmountOwed();
 			consecUnpaid = false;
 		}
+		else if (cell->Type() == BasicExcelCell::STRING){
+			if (cell->GetString() == "X" || cell->GetString() == "x" || cell->GetString() == "W" || cell->GetString() == "w"){
+				year = tempYear;
+				monthNum = dateRow - 7;
+				bookRecord->setMostRecentPaymentDate(monthNum, year);
+				bookRecord->setAmountOwed();
+				consecUnpaid = false;
+			}
+		}
 		dateRow++;
 	}
 

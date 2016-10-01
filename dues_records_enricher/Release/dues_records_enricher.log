@@ -1,9 +1,118 @@
-﻿  Constants.cpp
-  bookRecordDTO.cpp
-  excelDate.cpp
-  main.cpp
-main.cpp(668): warning C4244: 'argument' : conversion from 'time_t' to 'double', possible loss of data
-  Generating code
-c:\users\pf749_000\documents\visual studio 2013\projects\dues_records_enricher\dues_records_enricher\bookrecorddto.cpp(294): warning C4715: 'bookRecord::bookRecordDTO::getMonthsSincePayment' : not all control paths return a value
-  Finished generating code
-  dues_records_enricher.vcxproj -> C:\Users\pf749_000\Documents\Visual Studio 2013\Projects\dues_records_enricher\Release\dues_records_enricher.exe
+﻿Build started 9/25/2016 3:17:30 PM.
+     1>Project "C:\Users\Peter\Documents\dues_records_enricher\dues_records_enricher\dues_records_enricher.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -D_SCL_SECURE_NO_WARNINGS BasicExcel.cpp bookRecordDTO.cpp Constants.cpp excelDate.cpp
+         BasicExcel.cpp
+     1>BasicExcel.cpp(50): warning C4244: '=' : conversion from 'std::streamoff' to 'size_t', possible loss of data
+     1>BasicExcel.cpp(55): warning C4244: '=' : conversion from 'std::streamoff' to 'size_t', possible loss of data
+     1>BasicExcel.cpp(1072): warning C4018: '>=' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1084): warning C4018: '>=' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1096): warning C4018: '>=' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1109): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1120): warning C4018: '>=' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1132): warning C4018: '>=' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1144): warning C4018: '>=' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1170): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1182): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1194): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1235): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1246): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1258): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1271): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1339): warning C4018: '<' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1351): warning C4018: '<' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1362): warning C4018: '<' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1377): warning C4018: '<' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1387): warning C4018: '<' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1397): warning C4018: '<' : signed/unsigned mismatch
+     1>BasicExcel.cpp(1861): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(2255): warning C4018: '>=' : signed/unsigned mismatch
+     1>BasicExcel.cpp(2262): warning C4018: '>=' : signed/unsigned mismatch
+     1>BasicExcel.cpp(2269): warning C4018: '>=' : signed/unsigned mismatch
+     1>BasicExcel.cpp(2292): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(2299): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(2306): warning C4018: '>' : signed/unsigned mismatch
+     1>BasicExcel.cpp(2971): warning C4309: 'initializing' : truncation of constant value
+     1>BasicExcel.cpp(3007): warning C4309: 'initializing' : truncation of constant value
+     1>BasicExcel.cpp(3092): warning C4018: '<' : signed/unsigned mismatch
+     1>BasicExcel.cpp(3102): warning C4018: '<' : signed/unsigned mismatch
+     1>BasicExcel.cpp(3152): warning C4018: '<' : signed/unsigned mismatch
+     1>BasicExcel.cpp(3172): warning C4018: '<' : signed/unsigned mismatch
+     1>BasicExcel.cpp(4379): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+     1>BasicExcel.cpp(4410): warning C4244: '*=' : conversion from 'double' to 'int', possible loss of data
+     1>BasicExcel.cpp(4424): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>BasicExcel.cpp(4426): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>BasicExcel.cpp(4436): warning C4244: 'initializing' : conversion from '__int64' to 'int', possible loss of data
+     1>BasicExcel.cpp(4438): warning C4805: '|=' : unsafe mix of type 'int' and type 'bool' in operation
+     1>BasicExcel.cpp(4453): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>BasicExcel.cpp(4455): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>BasicExcel.cpp(5024): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\BasicExcel.hpp(130): warning C4018: '<' : signed/unsigned mismatch
+                 BasicExcel.cpp(291) : see reference to function template instantiation 'void YCompoundFiles::LittleEndian::Write<__int64>(char *,Type,int,int)' being compiled
+                 with
+                 [
+                     Type=__int64
+                 ]
+     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\BasicExcel.hpp(114): warning C4018: '<' : signed/unsigned mismatch
+                 BasicExcel.cpp(318) : see reference to function template instantiation 'void YCompoundFiles::LittleEndian::Read<__int64>(const char *,Type &,int,int)' being compiled
+                 with
+                 [
+                     Type=__int64
+                 ]
+     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\BasicExcel.hpp(148): warning C4018: '<' : signed/unsigned mismatch
+                 BasicExcel.cpp(2425) : see reference to function template instantiation 'void YCompoundFiles::LittleEndian::Read<short>(const std::vector<char,std::allocator<char>> &,Type &,int,int)' being compiled
+                 with
+                 [
+                     Type=short
+                 ]
+     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\BasicExcel.hpp(164): warning C4018: '<' : signed/unsigned mismatch
+                 BasicExcel.cpp(2436) : see reference to function template instantiation 'void YCompoundFiles::LittleEndian::Write<short>(std::vector<char,std::allocator<char>> &,Type,int,int)' being compiled
+                 with
+                 [
+                     Type=short
+                 ]
+     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\BasicExcel.hpp(123): warning C4018: '<' : signed/unsigned mismatch
+                 BasicExcel.cpp(2521) : see reference to function template instantiation 'void YCompoundFiles::LittleEndian::ReadString<char>(const char *,Type *,int,int)' being compiled
+                 with
+                 [
+                     Type=char
+                 ]
+     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\BasicExcel.hpp(140): warning C4018: '<' : signed/unsigned mismatch
+                 BasicExcel.cpp(2547) : see reference to function template instantiation 'void YCompoundFiles::LittleEndian::WriteString<char>(char *,Type *,int,int)' being compiled
+                 with
+                 [
+                     Type=char
+                 ]
+     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\BasicExcel.hpp(157): warning C4018: '<' : signed/unsigned mismatch
+                 BasicExcel.cpp(3689) : see reference to function template instantiation 'void YCompoundFiles::LittleEndian::ReadString<char>(const std::vector<char,std::allocator<char>> &,Type *,int,int)' being compiled
+                 with
+                 [
+                     Type=char
+                 ]
+     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\BasicExcel.hpp(174): warning C4018: '<' : signed/unsigned mismatch
+                 BasicExcel.cpp(3735) : see reference to function template instantiation 'void YCompoundFiles::LittleEndian::WriteString<char>(std::vector<char,std::allocator<char>> &,Type *,int,int)' being compiled
+                 with
+                 [
+                     Type=char
+                 ]
+         bookRecordDTO.cpp
+         Constants.cpp
+         excelDate.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -D_SCL_SECURE_NO_WARNINGS main.cpp
+         main.cpp
+     1>main.cpp(678): warning C4244: 'argument' : conversion from 'time_t' to 'double', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Peter\Documents\dues_records_enricher\Release\dues_records_enricher.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Peter\Documents\dues_records_enricher\Release\dues_records_enricher.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Peter\Documents\dues_records_enricher\Release\dues_records_enricher.lib" /MACHINE:X86 /SAFESEH Release\BasicExcel.obj
+         Release\bookRecordDTO.obj
+         Release\Constants.obj
+         Release\excelDate.obj
+         Release\main.obj
+         Generating code
+     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\bookrecorddto.cpp(294): warning C4715: 'bookRecord::bookRecordDTO::getMonthsSincePayment' : not all control paths return a value
+         Finished generating code
+         dues_records_enricher.vcxproj -> C:\Users\Peter\Documents\dues_records_enricher\Release\dues_records_enricher.exe
+     1>Done Building Project "C:\Users\Peter\Documents\dues_records_enricher\dues_records_enricher\dues_records_enricher.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:17.93

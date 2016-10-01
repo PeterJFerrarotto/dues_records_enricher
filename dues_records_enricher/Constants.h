@@ -124,15 +124,18 @@ namespace ColumnConstants {
 }
 
 namespace fileDirecs{
-	//static char const direc[360] = "C:/Users/pf749_000/Documents/Dues Records/Book Men/";
-	//static char const addrDirec[360] = "C:/Users/pf749_000/Documents/Dues Records/Book Men/addresses.xls";
-	static char const direc[360] = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/";
-	static char const addrDirec[360] = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/addresses.xls";
+	//static char const direc[360] = "C:/Users/Peter/Documents/Dues Records/Book Men/";
+	//static char const addrDirec[360] = "C:/Users/Peter/Documents/Dues Records/Book Men/addresses.xls";
+	//static char const direc[360] = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/";
+	//static char const addrDirec[360] = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/addresses.xls";
+	static char const direc[360] = "C:/Users/Peter/Desktop/Dues Records/Book Men/";
+	static char const addrDirec[360] = "C:/Users/Peter/Desktop/Dues Records/Book Men/addresses.xls";
 
-	//static const char* saveDirec = "C:/Users/pf749_000/Documents/Dues Records/Book Men/enrichedBookRecords.xls";
+	//static const char* saveDirec = "C:/Users/Peter/Documents/Dues Records/Book Men/enrichedBookRecords.xls";
 
-	static const char* saveDirec = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/enrichedBookRecords.xls";
+	//static const char* saveDirec = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/enrichedBookRecords.xls";
 
+	static const char* saveDirec = "C:/Users/Peter/Desktop/Dues Records/Book Men/enrichedBookRecords.xls";
 	static const vector<char*> dirLetters = { "A/", "B/", "C/", "D/", "E/", "F/", "G/", "H/", "I/", "J/", "K/", "L/", "M/", "N/", "O/", "P/", "Q/", "R/", "S/", "T/", "U/", "V/", "W/", "XYZ/" };
 	
 	static const char* workSheetName = "2010-2014";
