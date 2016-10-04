@@ -13,7 +13,7 @@ namespace bookRecord{
 	public:
 		bookRecordDTO();
 		
-		void setFirstName(const std::string& firstName);
+		void setName(const std::string& name);
 		void setBookNum(const int bookNum);
 		void addPaymentDate(excelDate::excelDate* date);
 		void addAssetFine(excelDate::excelDate* date, const std::string& assetFine);
@@ -26,14 +26,8 @@ namespace bookRecord{
 		void addPaidAssetFine(const std::string& name, int fine);
 		void addUnPaidAssetFine(const std::string& name, int fine);
 		void setIsStale();
-		void setAddress1(const std::string& a1);
-		void setAddress2(const std::string& a2);
-		void setAddress3(const std::string& a3);
-		void setLastName(const std::string& lastName);
-		void setMidInit(const std::string& midInit);
-		void setSuffix(const std::string& suffix);
+		void setAddress(const std::string& address);
 
-		const std::string& getFirstName();
 		const int getBookNum();
 		const excelDate::excelDate* const getPaymentDate(const std::string& mmYYYY);
 		const struct std::tm getMostRecentPaymentDate();
@@ -47,14 +41,9 @@ namespace bookRecord{
 		const int getUniqueIdentifier();
 		void setUniqueId(size_t id);
 		const bool getIsStale();
-		const std::string& getAddress1();
-		const std::string& getAddress2();
-		const std::string& getAddress3();
+		const std::string& getAddress();
 		const int getMonthsSincePayment();
-		const std::string& getLastName();
-		const std::string& getMidInit();
-		const std::string& getSuffix();
-		const std::string& getFullName();
+		const std::string& getName();
 
 		void clearData();
 
@@ -63,13 +52,8 @@ namespace bookRecord{
 		std::map<std::string, excelDate::excelDate*> paymentDates;
 		std::map<excelDate::excelDate*,std::list<std::string>> paidAssetFines;
 		std::map<std::string, std::list<int>> unpaidAssetFines;
-		std::string firstName;
-		std::string midInit;
-		std::string lastName;
-		std::string suffix;
-		std::string address1;
-		std::string address2;
-		std::string address3;
+		std::string name;
+		std::string address;
 		struct std::tm mostRecentPaymentDate;
 		excelDate::excelDate* initDate;
 		int uniqueId;

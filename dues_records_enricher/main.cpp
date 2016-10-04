@@ -178,6 +178,7 @@ bookRecord::bookRecordDTO* enrichBookData(const char* filePath, size_t num){
 	}
 	BasicExcelCell* cell;
 	string name;
+	string address;
 	string socialSecurity;
 	string month;
 	int assetFine;
@@ -209,7 +210,14 @@ bookRecord::bookRecordDTO* enrichBookData(const char* filePath, size_t num){
 	}
 	else{
 		name = cell->GetString();
-		std::cout << num << ": " <<  name << endl << endl;
+		std::cout << num << ": " <<  name << endl << endl << '\t';
+		bookRecord->setName(name);
+	}
+
+	cell = worksheet->Cell(ColumnConstants::ADDRESSR, ColumnConstants::ADDRESSC);
+	if (cell->Type() != BasicExcelCell::UNDEFINED){
+		address = cell->GetString();
+		bookRecord->setAddress(name);
 	}
 
 	cell = worksheet->Cell(ColumnConstants::BOOKNUMR, ColumnConstants::BOOKNUMC + 1);
@@ -368,108 +376,6 @@ bookRecord::bookRecordDTO* enrichBookData(const char* filePath, size_t num){
 	return bookRecord;
 }
 
-void getAddressData(vector<bookRecord::bookRecordDTO*>& bookRecords){
-	BasicExcel addressFile;
-	addressFile.Load(fileDirecs::addrDirec);
-	if (addressFile.worksheets_.empty()){
-		throw "No file found!";
-	}
-	size_t pos1;
-	size_t pos2;
-	size_t pos3;
-	string fullName;
-	string firstName;
-	string midInit;
-	string lastName;
-	string suffix;
-
-	BasicExcelWorksheet* worksheet = addressFile.GetWorksheet("Addresses");
-
-	size_t x = 0;
-	size_t y = 0;
-	BasicExcelCell* cell = worksheet->Cell(y++, x);
-	if (cell->Type() == BasicExcelCell::UNDEFINED){
-		throw "Addresses file is empty!";
-	}
-
-	bookRecord::bookRecordDTO* tmp;
-	for (size_t i = 0; i < bookRecords.size(); i++){
-		x = 0;
-		tmp = bookRecords[i];
-		cell = worksheet->Cell(y, x);
-		if (cell->Type() == BasicExcelCell::UNDEFINED){
-			break;
-		}
-		while (cell->Type() != BasicExcelCell::UNDEFINED && (cell->GetInteger() != tmp->getUniqueIdentifier())){
-			y++;
-			cell = worksheet->Cell(y, x);
-		}
-		x++;
-		if (cell->GetInteger() == tmp->getUniqueIdentifier()){
-
-			cell = worksheet->Cell(y, x++);
-			if (cell->Type() == BasicExcelCell::STRING){
-				fullName = cell->GetString();
-				pos1 = fullName.find_first_of(' ');
-				firstName = fullName.substr(0, pos1);
-				tmp->setFirstName(firstName);
-				cout << firstName;
-
-				pos2 = fullName.find_first_of(' ', pos1 + 1);
-				if (pos2 - pos1 == 2){
-					midInit = fullName[pos1 + 1];
-					tmp->setMidInit(midInit);
-					cout << ' ' << midInit;
-
-					pos3 = fullName.find_last_of(' ');
-					if (pos3 == pos2){
-						lastName = fullName.substr(pos2 + 1);
-						tmp->setLastName(lastName);
-						cout << ' ' << lastName;
-					}
-					else{
-						lastName = fullName.substr(pos2 + 1, pos3 - pos2 + 1);
-						tmp->setLastName(lastName);
-						cout << ' ' << lastName;
-
-						suffix = fullName.substr(pos3 + 1);
-						tmp->setSuffix(suffix);
-					}
-				}
-				else if (pos2 != pos1 && pos2 != -1 && pos2 < fullName.size()){
-					lastName = fullName.substr(pos1 + 1, pos2 - pos1 - 1);
-					tmp->setLastName(lastName);
-					cout << ' ' << lastName;
-
-					suffix = fullName.substr(pos2 + 1);
-					tmp->setSuffix(suffix);
-					cout << ' ' << suffix;
-				}
-				else{
-					lastName = fullName.substr(pos1 + 1);
-					tmp->setLastName(lastName);
-					cout << ' ' << lastName;
-				}
-				cout << endl << endl;
-			}
-			cell = worksheet->Cell(y, x++);
-			if (cell->Type() == BasicExcelCell::STRING){
-				tmp->setAddress1(cell->GetString());
-			}
-
-			cell = worksheet->Cell(y, x++);
-			if (cell->Type() == BasicExcelCell::STRING){
-				tmp->setAddress2(cell->GetString());
-			}
-
-			cell = worksheet->Cell(y++, x);
-			if (cell->Type() == BasicExcelCell::STRING){
-				tmp->setAddress3(cell->GetString());
-			}
-		}
-	}
-}
-
 void loadBookData(vector<bookRecord::bookRecordDTO*>& bookRecords){
 	DIR *dirp;
 	struct dirent *dp;
@@ -505,21 +411,13 @@ void loadBookData(vector<bookRecord::bookRecordDTO*>& bookRecords){
 			}
 		}
 	}
-	if (bookRecords.size() > 0){
-		try{
-			getAddressData(bookRecords);
-		}
-		catch (const std::string& e){
-			throw e;
-		}
-	}
 }
 
 void prepareEnrichedBook(BasicExcelWorksheet* worksheet){
 	BasicExcelCell* cell;
 	size_t row = 0;
 	size_t col = 0;
-	vector<const char*> columnNames = { "UniqueID", "FirstName", "MidInit", "LastName", "Suffix", "FullName", "BookNum", "RetiredInd", "Address 1", "Address 2", "Address 3", "InitDate", "AmountOwed", "MostRecentPaymentMonth", "MostRecentPaymentYear", "MonthsSincePayment", "StaleInd"};
+	vector<const char*> columnNames = { "UniqueID", "Name", "BookNum", "RetiredInd", "Address", "InitDate", "AmountOwed", "MostRecentPaymentMonth", "MostRecentPaymentYear", "MonthsSincePayment", "StaleInd"};
 	for (; col < columnNames.size(); col++){
 		cell = worksheet->Cell(row, col);
 		cell->SetString(columnNames[col]);
@@ -580,23 +478,7 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 		cell->SetInteger(tmp->getUniqueIdentifier());
 
 		cell = worksheet->Cell(destRow, destCol++);
-		cell->SetString(tmp->getFirstName().c_str());
-		
-		cell = worksheet->Cell(destRow, destCol++);
-		if (tmp->getMidInit() != ""){
-			cell->SetString(tmp->getMidInit().c_str());
-		}
-		
-		cell = worksheet->Cell(destRow, destCol++);
-		cell->SetString(tmp->getLastName().c_str());
-
-		cell = worksheet->Cell(destRow, destCol++);
-		if (tmp->getSuffix() != ""){
-			cell->SetString(tmp->getSuffix().c_str());
-		}
-
-		cell = worksheet->Cell(destRow, destCol++);
-		cell->SetString(tmp->getFullName().c_str());
+		cell->SetString(tmp->getName().c_str());
 
 		cell = worksheet->Cell(destRow, destCol++);
 		if (tmp->getBookNum() != 0){
@@ -608,13 +490,7 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 		cell->SetInteger(retiredStatus);
 
 		cell = worksheet->Cell(destRow, destCol++);
-		cell->SetString(tmp->getAddress1().c_str());
-
-		cell = worksheet->Cell(destRow, destCol++);
-		cell->SetString(tmp->getAddress2().c_str());
-
-		cell = worksheet->Cell(destRow, destCol++);
-		cell->SetString(tmp->getAddress3().c_str());
+		cell->SetString(tmp->getAddress().c_str());
 
 		cell = worksheet->Cell(destRow, destCol++);
 		if (tmp->getInitDate() != nullptr){
@@ -646,7 +522,7 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 		staleStatus = (tmp->getIsStale() ? -1 : 0);
 		cell->SetInteger(staleStatus);
 
-		cout << "Done with " << tmp->getFirstName() << ' ' << tmp->getMidInit() << ' ' << tmp->getLastName() << ' ' << tmp->getSuffix() << " information..." << endl;
+		cout << "Done with " << tmp->getName() << " information..." << endl;
 
 		if (tmp->getPaymentDates().size() != 0)
 		{
@@ -676,10 +552,9 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 				detailCell = detailsWorksheet->Cell(detailRow++, detailCol);
 				dayDiff = ((dateStringPair.second->getDatePaidFor() + 2208988800) / (60 * 60 * 24)) + 2;
 				detailCell->SetDouble(dayDiff);
-				
 			}
+			cout << "Done with " << tmp->getName() << " monthly fees..." << endl;
 		}
-		cout << "Done with " << tmp->getFirstName() << ' ' << tmp->getMidInit() << ' ' << tmp->getLastName() << ' ' << tmp->getSuffix() << " monthly fees..." << endl;
 
 		if (tmp->getPaidAssetFines().size() != 0){
 			for (pair<excelDate::excelDate*, list<string>> paidAssetFine : tmp->getPaidAssetFines()){
@@ -698,7 +573,7 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 					detailCell->SetString(name.c_str());
 				}
 			}
-			cout << "Done with " << tmp->getFirstName() << ' ' << tmp->getMidInit() << ' ' << tmp->getLastName() << ' ' << tmp->getSuffix() << " paid assessments..." << endl;
+			cout << "Done with " << tmp->getName() << " paid assessments..." << endl;
 		}
 
 		if (tmp->getUnpaidAssetFines().size() != 0){
@@ -732,10 +607,10 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 					detailCell = detailsWorksheet->Cell(detailRow++, detailCol);
 					detailCell->SetInteger(fine);
 				}
-				cout << "Done with " << tmp->getFirstName() << ' ' << tmp->getMidInit() << ' ' << tmp->getLastName() << ' ' << tmp->getSuffix() << " unpaid assessments..." << endl;
 			}
+			cout << "Done with " << tmp->getName() << " unpaid assessments..." << endl;
 		}
-		cout << "Done with " << tmp->getFirstName() << ' ' << tmp->getMidInit() << ' ' << tmp->getLastName() << ' ' << tmp->getSuffix() << "!" << endl << endl;
+		cout << "Done with " << tmp->getName() << "!" << endl << endl;
 		tmp->clearData();
 		delete tmp;
 	}

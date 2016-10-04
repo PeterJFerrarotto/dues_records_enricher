@@ -9,8 +9,8 @@ namespace bookRecord{
 	{
 	}
 
-	void bookRecordDTO::setFirstName(const string& firstName){
-		this->firstName = firstName;
+	void bookRecordDTO::setName(const string& name){
+		this->name = name;
 	}
 
 	void bookRecordDTO::setBookNum(const int bookNum){
@@ -223,8 +223,8 @@ namespace bookRecord{
 		return 0;
 	}
 
-	const string& bookRecordDTO::getFirstName(){
-		return firstName;
+	const string& bookRecordDTO::getName(){
+		return name;
 	}
 
 	const int bookRecordDTO::getBookNum(){
@@ -244,28 +244,8 @@ namespace bookRecord{
 		return isStale;
 	}
 
-	const string& bookRecordDTO::getAddress1(){
-		return address1;
-	}
-
-	const string& bookRecordDTO::getAddress2(){
-		return address2;
-	}
-
-	const string& bookRecordDTO::getAddress3(){
-		return address3;
-	}
-
-	void bookRecordDTO::setAddress1(const string& a1){
-		address1 = a1;
-	}
-
-	void bookRecordDTO::setAddress2(const string& a2){
-		address2 = a2;
-	}
-
-	void bookRecordDTO::setAddress3(const string& a3){
-		address3 = a3;
+	const string& bookRecordDTO::getAddress(){
+		return address;
 	}
 
 	const int bookRecordDTO::getMonthsSincePayment(){
@@ -318,42 +298,8 @@ namespace bookRecord{
 			initDate = nullptr;
 		}
 	}
-	const string& bookRecordDTO::getLastName(){
-		return this->lastName;
-	}
 
-	void bookRecordDTO::setLastName(const string& lastName){
-		this->lastName = lastName;
-	}
-
-	void bookRecordDTO::setMidInit(const string& midInit){
-		this->midInit = midInit;
-	}
-
-	const string& bookRecordDTO::getMidInit(){
-		return midInit;
-	}
-
-	void bookRecordDTO::setSuffix(const string& suffix){
-		this->suffix = suffix;
-	}
-
-	const string& bookRecordDTO::getSuffix(){
-		return suffix;
-	}
-
-	const string& bookRecordDTO::getFullName(){
-		string* fullName = new string;
-		*fullName = firstName;
-
-		if (midInit != "")
-			*fullName = *fullName + ' ' + midInit;
-
-		*fullName = *fullName + ' ' + lastName;
-
-		if (suffix != "")
-			*fullName = *fullName + ' ' + suffix;
-
-		return *fullName;
+	void bookRecordDTO::setAddress(const string& address){
+		this->address = address;
 	}
 }
