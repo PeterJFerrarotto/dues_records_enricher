@@ -18,9 +18,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Constants.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="bookRecordDTO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -100,7 +100,6 @@
   <ItemGroup>
     <ClCompile Include="BasicExcel.cpp" />
     <ClCompile Include="bookRecordDTO.cpp" />
-    <ClCompile Include="Constants.cpp" />
     <ClCompile Include="excelDate.cpp" />
     <ClCompile Include="main.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
