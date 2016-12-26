@@ -248,6 +248,14 @@ namespace bookRecord{
 		return address;
 	}
 
+	const string& bookRecordDTO::getAddress1(){
+		return address1;
+	}
+
+	const string& bookRecordDTO::getAddress2(){
+		return address2;
+	}
+
 	const int bookRecordDTO::getMonthsSincePayment(){
 		if (this->mostRecentPaymentMonth > 0 && this->mostRecentPaymentMonth <= 12){
 			time_t t = time(NULL);
@@ -301,5 +309,12 @@ namespace bookRecord{
 
 	void bookRecordDTO::setAddress(const string& address){
 		this->address = address;
+		populateAddresses12();
+	}
+
+	void bookRecordDTO::populateAddresses12(){
+		int endOfAddress1 = address.find(';');
+		address1 = address.substr(0, endOfAddress1);
+		address2 = address.substr(endOfAddress1 + 2, address.size() - endOfAddress1 + 1);
 	}
 }

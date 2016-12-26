@@ -217,7 +217,7 @@ bookRecord::bookRecordDTO* enrichBookData(const char* filePath, size_t num){
 	cell = worksheet->Cell(ColumnConstants::ADDRESSR, ColumnConstants::ADDRESSC);
 	if (cell->Type() != BasicExcelCell::UNDEFINED){
 		address = cell->GetString();
-		bookRecord->setAddress(name);
+		bookRecord->setAddress(address);
 	}
 
 	cell = worksheet->Cell(ColumnConstants::BOOKNUMR, ColumnConstants::BOOKNUMC + 1);
@@ -417,7 +417,7 @@ void prepareEnrichedBook(BasicExcelWorksheet* worksheet){
 	BasicExcelCell* cell;
 	size_t row = 0;
 	size_t col = 0;
-	vector<const char*> columnNames = { "UniqueID", "Name", "BookNum", "RetiredInd", "Address", "InitDate", "AmountOwed", "MostRecentPaymentMonth", "MostRecentPaymentYear", "MonthsSincePayment", "StaleInd"};
+	vector<const char*> columnNames = { "UniqueID", "Name", "BookNum", "RetiredInd", "Address1", "Address2", "InitDate", "AmountOwed", "MostRecentPaymentMonth", "MostRecentPaymentYear", "MonthsSincePayment", "StaleInd"};
 	for (; col < columnNames.size(); col++){
 		cell = worksheet->Cell(row, col);
 		cell->SetString(columnNames[col]);
@@ -490,7 +490,13 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 		cell->SetInteger(retiredStatus);
 
 		cell = worksheet->Cell(destRow, destCol++);
-		cell->SetString(tmp->getAddress().c_str());
+		cell->SetString(tmp->getAddress1().c_str());
+
+		cell = worksheet->Cell(destRow, destCol++);
+		cell->SetString(tmp->getAddress2().c_str());
+
+		//cell = worksheet->Cell(destRow, destCol++);
+		//cell->SetString(tmp->getAddress3().c_str());
 
 		cell = worksheet->Cell(destRow, destCol++);
 		if (tmp->getInitDate() != nullptr){

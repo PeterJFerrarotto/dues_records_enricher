@@ -44,6 +44,8 @@ namespace bookRecord{
 		const std::string& getAddress();
 		const int getMonthsSincePayment();
 		const std::string& getName();
+		const std::string& getAddress1();
+		const std::string& getAddress2();
 
 		void clearData();
 
@@ -54,6 +56,7 @@ namespace bookRecord{
 		std::map<std::string, std::list<int>> unpaidAssetFines;
 		std::string name;
 		std::string address;
+		std::string address1, address2;
 		struct std::tm mostRecentPaymentDate;
 		excelDate::excelDate* initDate;
 		int uniqueId;
@@ -67,6 +70,8 @@ namespace bookRecord{
 		void deletePaymentDate(std::pair<std::string, excelDate::excelDate*> paymentDate);
 
 		void deleteAssetFine(std::pair<excelDate::excelDate*, int> assetFine);
+
+		void populateAddresses12();
 	};
 }
 

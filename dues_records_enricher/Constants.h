@@ -129,18 +129,11 @@ namespace ColumnConstants {
 }
 
 namespace fileDirecs{
-	//static char const direc[360] = "C:/Users/Peter/Documents/Dues Records/Book Men/";
-	//static char const addrDirec[360] = "C:/Users/Peter/Documents/Dues Records/Book Men/addresses.xls";
-	//static char const direc[360] = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/";
-	//static char const addrDirec[360] = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/addresses.xls";
-	static char const direc[360] = "C:/Users/peter/My Documents/Dues Records/Book Men/";
-	//static char const addrDirec[360] = "C:/Users/Peter/Desktop/Dues Records/Book Men/addresses.xls";
+	static char const direc[360] = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/";
+	//static char const direc[360] = "C:/Users/peter/My Documents/Dues Records/Book Men/";
 
-	//static const char* saveDirec = "C:/Users/Peter/Documents/Dues Records/Book Men/enrichedBookRecords.xls";
-
-	//static const char* saveDirec = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/enrichedBookRecords.xls";
-
-	static const char* saveDirec = "C:/Users/peter/My Documents/Dues Records/Book Men/enrichedBookRecords.xls";
+	static const char* saveDirec = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/enrichedBookRecords.xls";
+	//static const char* saveDirec = "C:/Users/peter/My Documents/Dues Records/Book Men/enrichedBookRecords.xls";
 	static const vector<char*> dirLetters = { "A/", "B/", "C/", "D/", "E/", "F/", "G/", "H/", "I/", "J/", "K/", "L/", "M/", "N/", "O/", "P/", "Q/", "R/", "S/", "T/", "U/", "V/", "W/", "XYZ/" };
 	
 	static const char* workSheetName = "2010-2014";
@@ -160,6 +153,11 @@ namespace exceptions{
 namespace defaultValues{
 	static const int defaultFee = 39;
 	static const int retiredFee = 3;
+}
+
+namespace stateNames{
+	static const std::vector<std::string> stateAbbrevNoPunctuation = { "NJ", "NY", "CT", "PA"};
+	static const std::vector<std::string> stateAbbrevPunctuation = { "N.J.", "N.Y.", "C.T.", "P.A." };
 }
 
 #endif
