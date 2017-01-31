@@ -50,6 +50,9 @@ namespace bookRecord{
 		void clearData();
 
 		~bookRecordDTO();
+
+		void setIsFrozen(bool isFrozen){ this->isFrozen = isFrozen; }
+		bool getIsFrozen(){ return isFrozen; }
 	private:
 		std::map<std::string, excelDate::excelDate*> paymentDates;
 		std::map<excelDate::excelDate*,std::list<std::string>> paidAssetFines;
@@ -62,6 +65,7 @@ namespace bookRecord{
 		int uniqueId;
 		bool isRetired;
 		bool isStale;
+		bool isFrozen;
 		int bookNum;
 		int amountOwed;
 		int mostRecentPaymentMonth;

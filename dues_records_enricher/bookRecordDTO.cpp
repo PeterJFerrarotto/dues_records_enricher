@@ -237,11 +237,12 @@ namespace bookRecord{
 		int month = timePtr->tm_mon + 1;
 		int year = timePtr->tm_year + 1900;
 
-		isStale = mostRecentPaymentYear < year || (mostRecentPaymentYear == year && mostRecentPaymentMonth <= month - 2);
+		isStale = mostRecentPaymentYear < year - 1 || (mostRecentPaymentYear == year - 1 && ((month == 1 && mostRecentPaymentMonth <= 10) || (month == 2 && mostRecentPaymentMonth <= 11) || (month == 3 && mostRecentPaymentMonth <= 12) || (month >= 4))) || (mostRecentPaymentYear == year && mostRecentPaymentMonth <= month - 3);
 	}
 
 	const bool bookRecordDTO::getIsStale(){
-		return isStale;
+		int x = 5;
+		return isStale && !isFrozen;
 	}
 
 	const string& bookRecordDTO::getAddress(){
@@ -305,6 +306,7 @@ namespace bookRecord{
 			delete initDate;
 			initDate = nullptr;
 		}
+		toDelete = nullptr;
 	}
 
 	void bookRecordDTO::setAddress(const string& address){

@@ -129,10 +129,12 @@ namespace ColumnConstants {
 }
 
 namespace fileDirecs{
-	static char const direc[360] = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/";
+	//static char const direc[360] = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/";
+	static char const direc[360] = "C:/Users/richard/Desktop/Dues Records/Book Men/";
 	//static char const direc[360] = "C:/Users/peter/My Documents/Dues Records/Book Men/";
 
-	static const char* saveDirec = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/enrichedBookRecords.xls";
+	//static const char* saveDirec = "C:/Users/Home-PC/Desktop/Dues Records/Book Men/enrichedBookRecords.xls";
+	static const char* saveDirec = "C:/Users/richard/Desktop/Dues Records/Book Men/enrichedBookRecords.xls";
 	//static const char* saveDirec = "C:/Users/peter/My Documents/Dues Records/Book Men/enrichedBookRecords.xls";
 	static const vector<char*> dirLetters = { "A/", "B/", "C/", "D/", "E/", "F/", "G/", "H/", "I/", "J/", "K/", "L/", "M/", "N/", "O/", "P/", "Q/", "R/", "S/", "T/", "U/", "V/", "W/", "XYZ/" };
 	

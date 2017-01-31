@@ -227,7 +227,7 @@ bookRecord::bookRecordDTO* enrichBookData(const char* filePath, size_t num){
 		bookNum = getNumberFromString(tmp);
 		if (bookNum > 0){
 			bookRecord->setBookNum(bookNum);
-			isRetired = (tmp[tmp.size() - 1] == 'r');
+			isRetired = (tmp[tmp.size() - 1] == 'r' || tmp[tmp.size() - 1] == 'R');
 			bookRecord->setIsRetired(isRetired);
 			std::cout << bookNum << '\t';
 		}
@@ -245,7 +245,7 @@ bookRecord::bookRecordDTO* enrichBookData(const char* filePath, size_t num){
 		bookNum = getNumberFromString(tmp);
 		if (bookNum > 0){
 			bookRecord->setBookNum(bookNum);
-			isRetired = (tmp[tmp.size() - 1] == 'r');
+			isRetired = (tmp[tmp.size() - 1] == 'r' || tmp[tmp.size() - 1] == 'R');
 			bookRecord->setIsRetired(isRetired);
 			std::cout << bookNum << '\t';
 		}
@@ -317,14 +317,19 @@ bookRecord::bookRecordDTO* enrichBookData(const char* filePath, size_t num){
 			bookRecord->setMostRecentPaymentDate(monthNum, year);
 			bookRecord->setAmountOwed();
 			consecUnpaid = false;
+			bookRecord->setIsFrozen(false);
 		}
 		else if (cell->Type() == BasicExcelCell::STRING){
-			if (cell->GetString() == "X" || cell->GetString() == "x" || cell->GetString() == "W" || cell->GetString() == "w"){
+			if (strcmp(cell->GetString(), "X") == 0 || strcmp(cell->GetString(), "x") == 0 || strcmp(cell->GetString(), "W") == 0 || strcmp(cell->GetString(), "w") == 0){
 				year = tempYear;
 				monthNum = dateRow - 7;
 				bookRecord->setMostRecentPaymentDate(monthNum, year);
 				bookRecord->setAmountOwed();
 				consecUnpaid = false;
+				bookRecord->setIsFrozen(false);
+			}
+			else if (strcmp(cell->GetString(), "correction") == 0 || strcmp(cell->GetString(), "frozen") == 0 || strcmp(cell->GetString(), "frzn") == 0){
+				bookRecord->setIsFrozen(true);
 			}
 		}
 		dateRow++;
@@ -620,7 +625,13 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 		tmp->clearData();
 		delete tmp;
 	}
+	//for (size_t i = 0; i < bookRecords.size(); i++){
+	//	bookRecords[i]->clearData();
+	//	delete bookRecords[i];
+	//	bookRecords[i] = nullptr;
+	//}	
 	bookRecords.clear();
+	cout << "Please wait, saving..." << endl;
 	bookDataFile.SaveAs(fileDirecs::saveDirec);
 }
 
@@ -635,6 +646,6 @@ int main()
 	catch (const string& e){
 		std::cout << e << endl;
 	}
-	std::cout << "Complete!" << endl;
+	std::cout << "Complete! Press enter to exit." << endl;
 	getline(cin, exitString);
 }
