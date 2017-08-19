@@ -113,6 +113,7 @@
     <ClInclude Include="bookRecordDTO.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="excelDate.h" />
+    <ClInclude Include="stringTrimmer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

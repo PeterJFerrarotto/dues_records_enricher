@@ -1,7 +1,9 @@
 #include "bookRecordDTO.h"
 #include <algorithm>
 #include <ctime>
+#include <sstream>
 #include "Constants.h"
+#include "stringTrimmer.h"
 using namespace std;
 
 namespace bookRecord{
@@ -316,7 +318,8 @@ namespace bookRecord{
 
 	void bookRecordDTO::populateAddresses12(){
 		int endOfAddress1 = address.find(';');
-		address1 = address.substr(0, endOfAddress1);
-		address2 = address.substr(endOfAddress1 + 2, address.size() - endOfAddress1 + 1);
+		
+		address1 = trimmed(address.substr(0, endOfAddress1));
+		address2 = trimmed(address.substr(endOfAddress1 + 2, address.size() - endOfAddress1 + 1));
 	}
 }

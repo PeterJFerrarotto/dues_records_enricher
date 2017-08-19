@@ -1,22 +1,24 @@
-﻿Build started 1/21/2017 10:10:35 AM.
+﻿Build started 6/25/2017 2:24:34 PM.
      1>Project "C:\Users\peter\Documents\dues_records_enricher\dues_records_enricher\dues_records_enricher.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /Oi /Oy- /GL /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -D_SCL_SECURE_NO_WARNINGS bookRecordDTO.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /Oi /Oy- /GL /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -D_SCL_SECURE_NO_WARNINGS bookRecordDTO.cpp excelDate.cpp
          bookRecordDTO.cpp
+         excelDate.cpp
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /Oi /Oy- /GL /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -D_SCL_SECURE_NO_WARNINGS main.cpp
          main.cpp
-     1>main.cpp(565): warning C4244: 'argument' : conversion from 'time_t' to 'double', possible loss of data
+     1>main.cpp(461): warning C4101: 'detailCell' : unreferenced local variable
+     1>main.cpp(462): warning C4101: 'dayDiff' : unreferenced local variable
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\peter\Documents\dues_records_enricher\Release\dues_records_enricher.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\peter\Documents\dues_records_enricher\Release\dues_records_enricher.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\peter\Documents\dues_records_enricher\Release\dues_records_enricher.lib" /MACHINE:X86 /SAFESEH Release\BasicExcel.obj
          Release\bookRecordDTO.obj
          Release\excelDate.obj
          Release\main.obj
          Generating code
-     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\bookrecorddto.cpp(283): warning C4715: 'bookRecord::bookRecordDTO::getMonthsSincePayment' : not all control paths return a value
+     1>c:\users\peter\documents\dues_records_enricher\dues_records_enricher\bookrecorddto.cpp(285): warning C4715: 'bookRecord::bookRecordDTO::getMonthsSincePayment' : not all control paths return a value
          Finished generating code
          dues_records_enricher.vcxproj -> C:\Users\peter\Documents\dues_records_enricher\Release\dues_records_enricher.exe
      1>Done Building Project "C:\Users\peter\Documents\dues_records_enricher\dues_records_enricher\dues_records_enricher.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.07
+Time Elapsed 00:00:06.24

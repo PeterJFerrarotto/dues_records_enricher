@@ -41,5 +41,8 @@
     <ClInclude Include="BasicExcel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="stringTrimmer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

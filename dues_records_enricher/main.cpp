@@ -313,7 +313,7 @@ bookRecord::bookRecordDTO* enrichBookData(const char* filePath, size_t num){
 			year = tempYear;
 			monthNum = dateRow - 7;
 			date = new excelDate::excelDate(month, monthNum, year, dateVal);
-			bookRecord->addPaymentDate(date);
+			//bookRecord->addPaymentDate(date);
 			bookRecord->setMostRecentPaymentDate(monthNum, year);
 			bookRecord->setAmountOwed();
 			consecUnpaid = false;
@@ -364,11 +364,6 @@ bookRecord::bookRecordDTO* enrichBookData(const char* filePath, size_t num){
 		cell = worksheet->Cell(dateRow, dateCol);
 		if (cell->Type() == BasicExcelCell::UNDEFINED){
 			bookRecord->addUnPaidAssetFine(assetName, assetFine);
-		}
-		else if (cell->Type() == BasicExcelCell::DOUBLE){
-			dateVal = cell->GetDouble();
-			date = new excelDate::excelDate(dateVal);
-			bookRecord->addAssetFine(date, assetFineString);
 		}
 		assetRow++;
 		dateRow++;
@@ -429,16 +424,16 @@ void prepareEnrichedBook(BasicExcelWorksheet* worksheet){
 	}
 }
 
-void prepareDetailsBook(BasicExcelWorksheet* worksheet){
-	BasicExcelCell* cell;
-	size_t row = 0;
-	size_t col = 0;
-	vector<const char*> columnNames = { "UniqueID", "Type", "PaymentDate", "Name", "MonthYear", "Month", "Year", "DatePaidFor", "Fine" };
-	for (; col < columnNames.size(); col++){
-		cell = worksheet->Cell(row, col);
-		cell->SetString(columnNames[col]);
-	}
-}
+//void prepareDetailsBook(BasicExcelWorksheet* worksheet){
+//	BasicExcelCell* cell;
+//	size_t row = 0;
+//	size_t col = 0;
+//	vector<const char*> columnNames = { "UniqueID", "Type", "PaymentDate", "Name", "MonthYear", "Month", "Year", "DatePaidFor", "Fine" };
+//	for (; col < columnNames.size(); col++){
+//		cell = worksheet->Cell(row, col);
+//		cell->SetString(columnNames[col]);
+//	}
+//}
 
 void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 	BasicExcel bookDataFile;
@@ -454,14 +449,14 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 		bookDataFile.Save();
 		BasicExcelWorksheet* worksheet = bookDataFile.GetWorksheet(fileDirecs::saveWorkSheetName);
 	}
-	BasicExcelWorksheet* detailsWorksheet = bookDataFile.GetWorksheet(fileDirecs::saveWorkSheetDetailsName);
+	/*BasicExcelWorksheet* detailsWorksheet = bookDataFile.GetWorksheet(fileDirecs::saveWorkSheetDetailsName);
 	if (detailsWorksheet == NULL){
 		bookDataFile.AddWorksheet(fileDirecs::saveWorkSheetDetailsName);
 		bookDataFile.Save();
 		BasicExcelWorksheet* detailsWorksheet = bookDataFile.GetWorksheet(fileDirecs::saveWorkSheetDetailsName);
-	}
+	}*/
 	prepareEnrichedBook(worksheet);
-	prepareDetailsBook(detailsWorksheet);
+	//prepareDetailsBook(detailsWorksheet);
 	BasicExcelCell* cell;
 	BasicExcelCell* detailCell;
 	time_t dayDiff;
@@ -535,7 +530,7 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 
 		cout << "Done with " << tmp->getName() << " information..." << endl;
 
-		if (tmp->getPaymentDates().size() != 0)
+		/*if (tmp->getPaymentDates().size() != 0)
 		{
 			for (pair<string, excelDate::excelDate*> dateStringPair : tmp->getPaymentDates()){
 				detailCol = 0;
@@ -565,9 +560,9 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 				detailCell->SetDouble(dayDiff);
 			}
 			cout << "Done with " << tmp->getName() << " monthly fees..." << endl;
-		}
+		}*/
 
-		if (tmp->getPaidAssetFines().size() != 0){
+		/*if (tmp->getPaidAssetFines().size() != 0){
 			for (pair<excelDate::excelDate*, list<string>> paidAssetFine : tmp->getPaidAssetFines()){
 				for (string name : paidAssetFine.second){
 					detailCol = 0;
@@ -585,9 +580,9 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 				}
 			}
 			cout << "Done with " << tmp->getName() << " paid assessments..." << endl;
-		}
+		}*/
 
-		if (tmp->getUnpaidAssetFines().size() != 0){
+		/*if (tmp->getUnpaidAssetFines().size() != 0){
 			for (pair<string, list<int>> unpaidAssetFine : tmp->getUnpaidAssetFines()){
 				for (int fine : unpaidAssetFine.second){
 					detailCol = 0;
@@ -620,7 +615,7 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 				}
 			}
 			cout << "Done with " << tmp->getName() << " unpaid assessments..." << endl;
-		}
+		}*/
 		cout << "Done with " << tmp->getName() << "!" << endl << endl;
 		tmp->clearData();
 		delete tmp;
