@@ -1,7 +1,7 @@
 #include "BasicExcel.hpp"
 #include <iostream>
 #include <string>
-#include <dirent.h>
+#include "dirent.h"
 #include <vector>
 #include <ctime>
 #include <map>
@@ -529,93 +529,6 @@ void saveEnrichedBookData(vector<bookRecord::bookRecordDTO*> bookRecords){
 		cell->SetInteger(staleStatus);
 
 		cout << "Done with " << tmp->getName() << " information..." << endl;
-
-		/*if (tmp->getPaymentDates().size() != 0)
-		{
-			for (pair<string, excelDate::excelDate*> dateStringPair : tmp->getPaymentDates()){
-				detailCol = 0;
-				detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-				detailCell->SetInteger(tmp->getUniqueIdentifier());
-
-				detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-				detailCell->SetString("Monthly Fee");
-
-				detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-				detailCell->SetDouble(dateStringPair.second->getDispVal());
-
-				detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-				detailCell->SetString("");
-
-				detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-				detailCell->SetString(dateStringPair.first.c_str());
-
-				detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-				detailCell->SetInteger(dateStringPair.second->getMonthPaidFor());
-
-				detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-				detailCell->SetInteger(dateStringPair.second->getYearPaidFor());
-
-				detailCell = detailsWorksheet->Cell(detailRow++, detailCol);
-				dayDiff = ((dateStringPair.second->getDatePaidFor() + 2208988800) / (60 * 60 * 24)) + 2;
-				detailCell->SetDouble(dayDiff);
-			}
-			cout << "Done with " << tmp->getName() << " monthly fees..." << endl;
-		}*/
-
-		/*if (tmp->getPaidAssetFines().size() != 0){
-			for (pair<excelDate::excelDate*, list<string>> paidAssetFine : tmp->getPaidAssetFines()){
-				for (string name : paidAssetFine.second){
-					detailCol = 0;
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->SetInteger(tmp->getUniqueIdentifier());
-					
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->SetString("Paid Asset Fine");
-					
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->SetDouble(paidAssetFine.first->getDispVal());
-
-					detailCell = detailsWorksheet->Cell(detailRow++, detailCol);
-					detailCell->SetString(name.c_str());
-				}
-			}
-			cout << "Done with " << tmp->getName() << " paid assessments..." << endl;
-		}*/
-
-		/*if (tmp->getUnpaidAssetFines().size() != 0){
-			for (pair<string, list<int>> unpaidAssetFine : tmp->getUnpaidAssetFines()){
-				for (int fine : unpaidAssetFine.second){
-					detailCol = 0;
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->SetInteger(tmp->getUniqueIdentifier());
-					
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->SetString("Unpaid Asset Fine");
-					
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->EraseContents();
-					
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->SetString(unpaidAssetFine.first.c_str());
-					
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->SetString("");
-					
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->EraseContents();
-					
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->EraseContents();
-					
-					detailCell = detailsWorksheet->Cell(detailRow, detailCol++);
-					detailCell->EraseContents();
-					
-					detailCell = detailsWorksheet->Cell(detailRow++, detailCol);
-					detailCell->SetInteger(fine);
-				}
-			}
-			cout << "Done with " << tmp->getName() << " unpaid assessments..." << endl;
-		}*/
 		cout << "Done with " << tmp->getName() << "!" << endl << endl;
 		tmp->clearData();
 		delete tmp;
